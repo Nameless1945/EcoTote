@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Background | EcoTote</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&family=Inter+Tight:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Page-only styles (prefixed "bgp-" so they never clash with style.css). Reuses your palette, fonts, .btn, .cta, .marquee and .foot. -->
+  <style>
+    .bgp { position: relative; overflow: hidden; background: #ece6d6; color: #2f3d1f; font-family: "Inter", sans-serif; padding-top: 4.5rem;
+      background-image: radial-gradient(rgba(74,93,52,.13) 1.5px, transparent 1.5px); background-size: 22px 22px; }
+    .bgp > section { position: relative; z-index: 1; max-width: 1040px; margin: 0 auto; padding: 0 1.5rem; }
+
+    .bgp-leaf { position: absolute; z-index: 0; background: #c9d9a8; border-radius: 0 100% 0 100%; opacity: .85; }
+    .bgp-leaf::after { content: ""; position: absolute; left: 50%; top: 50%; width: 120%; height: 2px; background: rgba(74,93,52,.35); transform: translate(-50%,-50%) rotate(-45deg); }
+    .bgp-leaf.a { width: 340px; height: 340px; top: 40px; right: -90px; transform: rotate(15deg); background: #dce0ca; }
+    .bgp-leaf.b { width: 150px; height: 150px; top: 330px; right: 14%; transform: rotate(-30deg); }
+    .bgp-leaf.c { width: 220px; height: 220px; bottom: 120px; left: -70px; transform: rotate(60deg); background: #dce0ca; }
+
+    .bgp-intro { padding-top: 4rem; padding-bottom: 4rem; }
+    .bgp-intro h1 { font: 400 clamp(5rem, 17vw, 12rem)/.82 "Bebas Neue", Impact, sans-serif; color: #4a5d34; letter-spacing: .01em; }
+    .bgp-lead { margin-top: 2rem; max-width: 28ch; font: 600 clamp(1.4rem, 3vw, 2.1rem)/1.22 "Inter Tight", sans-serif; letter-spacing: -0.025em; transform: translateY(-20px); }
+
+    /* timeline */
+    .bgp-line { position: relative; padding-bottom: 6rem !important; display: grid; gap: 2rem; }
+    .bgp-line::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 6rem; border-left: 2px dashed #6f9456; }
+    .bgp-item { display: grid; grid-template-columns: 1fr 4rem 1fr; align-items: center; }
+    .bgp-num { grid-column: 2; grid-row: 1; justify-self: center; width: 3.4rem; height: 3.4rem; border-radius: 50%; display: grid; place-items: center;
+      background: #4a5d34; color: #e4e8d0; font: 400 1.6rem "Bebas Neue", Impact, sans-serif; letter-spacing: .04em; box-shadow: 0 0 0 8px #ece6d6; }
+    .bgp-box { position: relative; overflow: hidden; grid-row: 1; background: linear-gradient(160deg, #fff, #f3f5e8); border: 1px solid #e4e8d0; border-radius: 24px; padding: clamp(1.3rem, 3vw, 2rem); transition: transform .25s, box-shadow .25s; }
+    .bgp-item:nth-child(odd) .bgp-box { grid-column: 1; }
+    .bgp-item:nth-child(even) .bgp-box { grid-column: 3; }
+    .bgp-box::after { content: ""; position: absolute; right: -28px; bottom: -28px; width: 100px; height: 100px; border-radius: 0 100% 0 100%; background: rgba(111,148,86,.22); }
+    .bgp-box:hover { transform: translateY(-4px); box-shadow: 0 12px 26px rgba(74,93,52,.2); }
+    .bgp-box h2 { font-size: clamp(1.2rem, 2.2vw, 1.55rem); color: #2f3d1f; }
+    .bgp-box h2::after { content: ""; display: block; width: 40px; height: 4px; border-radius: 999px; background: #6f9456; margin: .6rem 0 .8rem; }
+    .bgp-box p { line-height: 1.7; color: #3b4d28; }
+    .bgp-box.hl { background: linear-gradient(160deg, #4a5d34, #3d4f2a); border-color: transparent; }
+    .bgp-box.hl h2, .bgp-box.hl p { color: #fff; }
+    .bgp-box.hl p { color: #dce0ca; }
+    .bgp-box.hl h2::after { background: #c9d9a8; }
+    .bgp-box.hl::after { background: rgba(255,255,255,.1); }
+
+    @media (max-width: 760px) {
+      .bgp-line::before { left: 3rem; }
+      .bgp-item { grid-template-columns: 3rem 1fr; gap: 1rem; }
+      .bgp-num { grid-column: 1; width: 3rem; height: 3rem; }
+      .bgp-item:nth-child(odd) .bgp-box, .bgp-item:nth-child(even) .bgp-box { grid-column: 2; }
+      .bgp-leaf.b { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a class="brand" href="index.html"><img src="images/Ecotote.png" alt=""><span>EcoTote</span></a>
+
+    <ul class="links" id="menu">
+      <li><a href="index.html#about">About EcoTote</a></li>
+      <li><a href="background.html">Background</a></li>
+      <li><a href="methodology.html">Methodology</a></li>
+      <li><a href="tv.html">Testing and Variables</a></li>
+      <li><a href="index.html#significance">Significance of the Study</a></li>
+      <li><a href="index.html#team">Researchers Profile</a></li>
+    </ul>
+
+    <a class="btn" href="index.html#team">Our team</a>
+    <button class="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="menu">☰</button>
+  </nav>
+
+  <main class="bgp">
+    <i class="bgp-leaf a"></i><i class="bgp-leaf b"></i><i class="bgp-leaf c"></i>
+
+    <section class="bgp-intro">
+      <h1>Testing<br>and<br>Variables</h1>
+      <p class="bgp-lead">insert.</p>
+    </section>
+
+    <section class="bgp1">
+      <div class="heading-line"></div>
+     
+
+      <section class="gridd">
+        <!--cbox-->
+        <div class="rww">
+          <!--contents-->
+          <div class="numero"><h2>0<br>1</h2></div>
+<!--box--><div class="cont" onclick="togglePanel(this)"><h2>Load-bearing capacity</h2>
+          <p>This evaluates the bag's ability to carry a load under specified testing conditions.</p>
+          <br>
+          <p>>>></p>
+        </div>
+        <!--content of cbox-->
+        <div class="cbox">
+            <h2>insert.</h2>
+            <br>
+            <p>This evaluates the bag's ability to carry a load under specified testing conditionsThis evaluates the bag's ability to carry a load under specified testing conditionsThis evaluates the bag's ability to carry a load under specified testing conditionsThis evaluates the bag's ability to carry a load under specified testing conditions</p>
+          </div>
+        </div><!-- closes .rww -->
+        
+    </section>
+
+
+
+    <section class="gridd">
+        <!--cbox-->
+        <div class="rww">
+          <!--contents-->
+          <div class="numero"><h2>0<br>1</h2></div>
+<!--box--><div class="cont" onclick="togglePanel(this)"><h2>Load-bearing capacity</h2>
+          <p>This evaluates the bag's ability to carry a load under specified testing conditions.</p>
+          <br>
+          <p>>>></p>
+        </div>
+        <!--content of cbox-->
+        <div class="cbox">
+            <h2>insert.</h2>
+            <br>
+            <p>This evaluates the bag's ability to carry a load under specified testing conditionsThis evaluates the bag's ability to carry a load under specified testing conditionsThis evaluates the bag's ability to carry a load under specified testing conditionsThis evaluates the bag's ability to carry a load under specified testing conditions</p>
+          </div>
+        </div><!-- closes .rww -->
+     
+        
+    </section>
+
+
+     <section class="gridd">
+        <!--cbox-->
+        <div class="rww">
+          <!--contents-->
+          <div class="numero"><h2>0<br>1</h2></div>
+<!--box--><div class="cont" onclick="togglePanel(this)"><h2>Load-bearing capacity</h2>
+          <p>This evaluates the bag's ability to carry a load under specified testing conditions.</p>
+          <br>
+          <p>>>></p>
+        </div>
+        <!--content of cbox-->
+        <div class="cbox">
+            <h2>insert.</h2>
+            <br>
+            <p>This evaluates the bag's ability to carry a load under specified testing conditionsThis evaluates the bag's ability to carry a load under specified testing conditionsThis evaluates the bag's ability to carry a load under specified testing conditionsThis evaluates the bag's ability to carry a load under specified testing conditions</p>
+          </div>
+        </div><!-- closes .rww -->
+     
+        
+    </section>
+
+    <style>
+      .bgp1 {
+        width: 100%;
+        min-height: 600px;
+        padding: 50px;
+        box-sizing: border-box; 
+      }
+      .bgp1 h2 {
+        font-size: 32px;
+        font-weight: 600;
+        margin: 0;
+      }
+      .heading-line {
+        width: 32px;
+        height: 5px;
+        background: #5c6d4a;
+        border-radius: 10px;
+        margin-top: -12px;
+      }
+      .gridd {
+        width: 100%;
+        max-width: 1100px;
+        margin: 4% 0%;
+        display: grid;
+        grid-template-columns: 1fr;
+       
+      }
+      .rww {
+        display: flex;
+        gap: 10px;
+        width: 157%;
+        max-width: 1100px;
+      
+        border-radius: 25px;
+        position: relative;
+      }
+
+      /*content cbox*/
+      .cbox {
+        padding: 15px 0;
+        border-bottom: 1px solid #c9c8ba;
+        align-items: flex-start;
+        border-width: 2px;
+        flex-direction: column;
+        max-width: 550px;
+        flex: 2;
+        background: #dce0ca;
+        border-radius: 25px;
+        transform: translateX(-535px);
+        pointer-events: none;
+        transition: transform 1s ease, opacity 1s ease;
+        z-index: -1;
+        overflow: hidden;
+        opacity: 0;
+        box-sizing: border-box;
+        
+      }
+      .cbox h2 {transform: translate(20px, 0px);}
+      .cbox p {max-width: 290px; transform: translate(20px, 0px);}
+      .cbox.show {
+        opacity: 1;
+        transform: translateX(0px);
+        pointer-events: auto;
+        height: auto;
+      }
+      @media (max-width: 650px) {
+        .cbox { grid-template-columns: 1fr;}
+      }
+
+    
+      .rww img { margin-top: -18%; margin-left: 120%;   width: auto;
+        height: 150px; }
+      .cont {
+        display: flex;
+        gap: 20px;
+        padding: 15px 0;
+        border-bottom: 1px solid #c9c8ba;
+        align-items: flex-start;
+        border-width: 2px;
+        flex-direction: column;
+        max-width: 550px;
+        flex: 2;
+        background: #dce0ca;
+        border-radius: 25px;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        cursor: pointer;
+        max-height: 200px;
+      }
+      .cont:hover {
+        transform: translateY(-8px);                  /* floats up */
+        box-shadow: 0 16px 30px rgba(0, 0, 0, 0.25);  /* soft shadow underneath */
+      }
+      .cont h2 {transform: translate(20px, 0px);}
+      .cont p {max-width: 340px; transform: translate(20px, 0px);}
+      .numero {
+        background: #2f3d1f;
+        flex: 1;
+        max-width: 30px;
+        color: #f6f8f3;
+        font-size: 25px;
+        border-radius: 25px;
+        max-height: 200px;
+      }
+      .numero h2 {transform: translate(5px, 64px);}
+  
+      @media (max-width: 650px) {
+        .gridd { grid-template-columns: 1fr; margin: 20px 0 20px 2%; }
+        .rww { flex-wrap: wrap; row-gap: 0; padding: 10px 18px; width: 100%; align-items: stretch; }
+        .rww img { margin-left: 10%; margin-top: 10%; width: auto; height: 50px;
+        transform: translate(-102px, -147px);}
+        .numero { max-height: none; display: flex; align-items: center; justify-content: center; }
+        .numero h2 {transform: none;}
+        .cont { max-height: none; padding-bottom: 20px; }
+        .cont p {width: 290px; padding-right: 10%; transform: translateX(10px);}
+        .cont h2 {transform: translateX(10px); width: auto;}
+
+        /* panel sits in normal flow under the card, collapsed to 0 height */
+        .cbox {
+          flex: 0 0 100%;
+          max-width: 100%;
+          position: static;
+          transform: none;
+          z-index: 0;
+          max-height: 0;
+          padding: 0;
+          margin-top: 0;
+          border-width: 0;
+          opacity: 0;
+          transition: max-height 1s ease, opacity 1s ease, padding 1s ease, margin 1s ease;
+        }
+        .cbox.show {
+          transform: none;
+          max-height: 600px;
+          padding: 15px 0;
+          margin-top: 10px;
+          border-width: 2px;
+          opacity: 1;
+        }
+      }
+    </style>
+
+
+
+
+
+   </main>
+
+
+
+   <!--end-->
+<div class="marquee" aria-hidden="true"><div class="track">
+    <span>Reduce</span><span>Reuse</span><span>Recycle</span><span>Plastic-free</span><span>EcoTote</span>
+    <span>Reduce</span><span>Reuse</span><span>Recycle</span><span>Plastic-free</span><span>EcoTote</span>
+  </div></div>
+
+  <footer class="foot">
+    <svg class="wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0,0 L0,40 C240,90 480,0 720,40 C960,80 1200,10 1440,45 L1440,0 Z" fill="#4c593e"/></svg>
+    <i class="leaf f1"></i><i class="leaf f2"></i>
+
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="index.html"><img src="images/Ecotote.png" alt=""><span>EcoTote</span></a>
+        <p>A stronger, greener alternative to plastic bags, made from recycled paper, cotton fibers, and beeswax.</p>
+      </div>
+      <div>
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="index.html#about">About EcoTote</a></li>
+          <li><a href="index.html#objectives">Objectives</a></li>
+          <li><a href="index.html#team">Our team</a></li>
+          <li><a href="#">Research</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Our promise</h3>
+        <ul class="tags"><li>Recycled</li><li>Reusable</li><li>Plastic-free</li></ul>
+        <a class="top" href="#">Back to top &uarr;</a>
+      </div>
+    </div>
+
+    <div class="foot-word" aria-hidden="true">ECOTOTE</div>
+    <p class="foot-bar">&copy; 2026 EcoTote &middot; A student research project</p>
+  </footer>
+
+  <!-- Menu toggle only (script.js is written for the home page hero) -->
+  <script>
+    const menuBtn = document.querySelector('.menu-btn');
+    const links = document.querySelector('.links');
+    menuBtn.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open);
+    });
+    links.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A') {
+        links.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // fade items in as you scroll
+    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.2 });
+    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+  </script>
+
+  <script>
+    function togglePanel(card) {
+      card.closest('.rww').querySelector('.cbox').classList.toggle('show');
+    }
+  </script>
+
+  
+
+    
+  
+
+
+
+  <!-- Auto-open on scroll (desktop + phone): each panel opens when its card scrolls into view -->
+  <script>
+    (function () {
+      const io2 = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          e.target.closest('.rww').querySelector('.cbox').classList.add('show');
+          io2.unobserve(e.target);   // opens once, then stays open
+        });
+      }, { rootMargin: '0px 0px -20% 0px', threshold: 0.5 });
+
+      document.querySelectorAll('.rww .cont').forEach((card) => io2.observe(card));
+    })();
+  </script>
+
+</body>

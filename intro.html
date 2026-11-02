@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EcoTote</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&family=Inter+Tight:wght@600;700;800&display=swap" rel="stylesheet">
+  <!-- When you merge into your site, move everything in this <style> into style.css -->
+  <style>
+    :root {
+      --forest: #1f4a2c;
+      --moss: #3f7a45;
+      --leaf: #8fbf6a;
+      --paper: #f6f3ea;
+      --ink: #14281a;
+    }
+    * { box-sizing: border-box; margin: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: "Inter", system-ui, sans-serif; color: var(--ink); background: var(--paper); }
+
+    /* ---------- NAV ---------- */
+    .nav {
+      position: fixed; inset: 0 0 auto 0; z-index: 20;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px clamp(20px, 5vw, 56px);
+    }
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--forest);
+             font-family: "Inter Tight", sans-serif; font-weight: 800; font-size: 1.25rem; }
+    .brand img { height: 36px; width: auto; }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { color: var(--forest); text-decoration: none; font-weight: 500; font-size: .95rem; }
+    .nav-links a:hover { text-decoration: underline; text-underline-offset: 4px; }
+    @media (max-width: 640px) { .nav-links { display: none; } }
+
+    /* ---------- PARALLAX INTRO ---------- */
+    .intro { position: relative; height: 230vh; }           /* scroll distance of the intro */
+    .intro-stage { position: sticky; top: 0; height: 100vh; overflow: hidden; background: #dfe6e8; }
+
+    .layer {
+      position: absolute; inset: 0;
+      background: url("images/background.png") center / cover no-repeat;
+      will-change: transform;
+    }
+    /* front layer = only the meadow + village, feathered, so it can move faster than the mountains */
+    .layer.front {
+      -webkit-mask-image: linear-gradient(to bottom, transparent 42%, #000 62%);
+              mask-image: linear-gradient(to bottom, transparent 42%, #000 62%);
+      transform-origin: 50% 100%;
+    }
+    .layer.back { transform-origin: 50% 40%; }
+
+    /* soft green wash that deepens on scroll, so the headline stays readable */
+    .tint { position: absolute; inset: 0; pointer-events: none;
+            background: linear-gradient(to bottom, rgba(246,243,234,.55), rgba(31,74,44,.0) 55%, rgba(31,74,44,.35));
+            opacity: var(--tint, 0.6); }
+
+    .headline {
+      position: absolute; inset: 0; z-index: 5;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 0 24px; will-change: transform, opacity;
+    }
+    .headline h1 {
+      font-family: "Inter Tight", sans-serif; font-weight: 800; letter-spacing: -0.04em;
+      font-size: clamp(3.6rem, 13vw, 11rem); line-height: .9; color: var(--forest);
+    }
+    .headline p {
+      margin-top: 22px; max-width: 34ch; font-size: clamp(1rem, 1.6vw, 1.3rem);
+      font-weight: 500; color: var(--ink);
+    }
+    .scroll-cue {
+      position: absolute; left: 50%; bottom: 28px; z-index: 6; translate: -50% 0;
+      font-size: .85rem; font-weight: 500; color: #fff; text-shadow: 0 1px 8px rgba(0,0,0,.45);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+    }
+    .scroll-cue i { width: 2px; height: 34px; background: #fff; border-radius: 2px;
+                    animation: drip 1.8s ease-in-out infinite; transform-origin: top; }
+    @keyframes drip { 0% { transform: scaleY(0); } 60% { transform: scaleY(1); opacity: 1; } 100% { transform: scaleY(1); opacity: 0; } }
+
+    /* ---------- CONTENT THAT SLIDES OVER THE INTRO ---------- */
+    .content { position: relative; z-index: 10; background: var(--paper); margin-top: -12vh;
+               border-radius: 36px 36px 0 0; padding: 12vh clamp(20px, 8vw, 120px) 18vh;
+               box-shadow: 0 -20px 60px rgba(20,40,26,.18); }
+    .content h2 { font-family: "Inter Tight", sans-serif; font-weight: 700; font-size: clamp(2rem, 5vw, 3.6rem);
+                  letter-spacing: -0.03em; color: var(--forest); max-width: 18ch; }
+    .content p { margin-top: 20px; max-width: 60ch; line-height: 1.65; font-size: 1.1rem; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-cue i { animation: none; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a class="brand" href="#"><img src="images/Ecotote.png" alt=""><span>EcoTote</span></a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#background">Background</a>
+      <a href="#objectives">Objectives</a>
+      <a href="#team">Team</a>
+    </div>
+  </nav>
+
+  <!-- ========== PARALLAX INTRO ========== -->
+  <header class="intro" id="intro">
+    <div class="intro-stage">
+      <div class="layer back" id="layerBack"></div>
+      <div class="layer front" id="layerFront"></div>
+      <div class="tint" id="tint"></div>
+
+      <div class="headline" id="headline">
+        <h1>EcoTote</h1>
+        <p>A stronger, water-resistant paper tote made from recycled paper.</p>
+      </div>
+
+      <div class="scroll-cue" id="cue"><span>Scroll</span><i></i></div>
+    </div>
+  </header>
+
+  <!-- ========== NEXT SECTION (slides over the intro) ========== -->
+  <main class="content" id="about">
+    <h2>Paper that can take the rain.</h2>
+    <p>EcoTote is our research into a tote bag that stays strong when wet, using recycled paper, cotton fibers and a beeswax coating.</p>
+  </main>
+
+  <!-- When you merge into your site, move this <script> into script.js -->
+  <script>
+    (function () {
+      const intro = document.getElementById('intro');
+      const back = document.getElementById('layerBack');
+      const front = document.getElementById('layerFront');
+      const tint = document.getElementById('tint');
+      const headline = document.getElementById('headline');
+      const cue = document.getElementById('cue');
+      const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let ticking = false;
+
+      function update() {
+        ticking = false;
+        // p goes 0 -> 1 across the scrolling distance of the intro
+        const max = intro.offsetHeight - innerHeight;
+        const p = Math.min(Math.max(scrollY / max, 0), 1);
+
+        // mountains: slow, gentle zoom (the far layer)
+        back.style.transform = `translateY(${p * -4}%) scale(${1 + p * 0.10})`;
+        // meadow + village: zooms much faster (the near layer) -> depth
+        front.style.transform = `translateY(${p * 3}%) scale(${1 + p * 0.38})`;
+        // headline drifts up, shrinks slightly, and fades out
+        const fade = Math.min(p / 0.55, 1);
+        headline.style.transform = `translateY(${p * -22}vh) scale(${1 - p * 0.12})`;
+        headline.style.opacity = 1 - fade;
+        cue.style.opacity = 1 - Math.min(p / 0.12, 1);
+        tint.style.setProperty('--tint', 0.6 + p * 0.4);
+      }
+
+      function onScroll() {
+        if (!ticking) { ticking = true; requestAnimationFrame(update); }
+      }
+
+      if (!reduce) {
+        addEventListener('scroll', onScroll, { passive: true });
+        addEventListener('resize', onScroll);
+      }
+      update();
+    })();
+  </script>
+</body>
+</html>

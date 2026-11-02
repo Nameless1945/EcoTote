@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Methodology | EcoTote</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&family=Inter+Tight:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+    <style>
+    .bgp { position: relative; overflow: hidden; background: #ece6d6; color: #2f3d1f; font-family: "Inter", sans-serif; padding-top: 4.5rem;
+      background-image: radial-gradient(rgba(74,93,52,.13) 1.5px, transparent 1.5px); background-size: 22px 22px; }
+    .bgp > section { position: relative; z-index: 1; max-width: 1040px; margin: 0 auto; padding: 0 1.5rem; }
+
+    .bgp-leaf { position: absolute; z-index: 0; background: #c9d9a8; border-radius: 0 100% 0 100%; opacity: .85; }
+    .bgp-leaf::after { content: ""; position: absolute; left: 50%; top: 50%; width: 120%; height: 2px; background: rgba(74,93,52,.35); transform: translate(-50%,-50%) rotate(-45deg); }
+    .bgp-leaf.a { width: 340px; height: 340px; top: 40px; right: -90px; transform: rotate(15deg); background: #dce0ca; }
+    .bgp-leaf.b { width: 150px; height: 150px; top: 330px; right: 14%; transform: rotate(-30deg); }
+    .bgp-leaf.c { width: 220px; height: 220px; bottom: 120px; left: -70px; transform: rotate(60deg); background: #dce0ca; }
+
+    .bgp-intro { padding-top: 4rem; padding-bottom: 4rem; }
+    .bgp-intro { --title-size: clamp(4rem, 14vw, 10.5rem); }
+    .bgp-intro h1 { font: 400 var(--title-size)/.82 "Bebas Neue", Impact, sans-serif; color: #4a5d34; letter-spacing: .01em; }
+    /* NEW: GIF sits beside the title, same height as the letters */
+    .bgp-title-row { display: flex; align-items: center; gap: clamp(.8rem, 2vw, 1.6rem); }
+    .bgp-title-gif { height: calc(var(--title-size) * .72); width: auto; flex: none; border-radius: 16px; display: block; }
+    .bgp-lead { margin-top: 2rem; max-width: 28ch; font: 600 clamp(1.4rem, 3vw, 2.1rem)/1.22 "Inter Tight", sans-serif; letter-spacing: -0.025em; transform: translateY(-20px); }
+
+    /* timeline */
+    .bgp-line { position: relative; padding-bottom: 6rem !important; display: grid; gap: 2rem; }
+    .bgp-line::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 6rem; border-left: 2px dashed #6f9456; }
+    .bgp-item { display: grid; grid-template-columns: 1fr 4rem 1fr; align-items: center; }
+    .bgp-num { grid-column: 2; grid-row: 1; justify-self: center; width: 3.4rem; height: 3.4rem; border-radius: 50%; display: grid; place-items: center;
+      background: #4a5d34; color: #e4e8d0; font: 400 1.6rem "Bebas Neue", Impact, sans-serif; letter-spacing: .04em; box-shadow: 0 0 0 8px #ece6d6; }
+    .bgp-box { position: relative; overflow: hidden; grid-row: 1; background: linear-gradient(160deg, #fff, #f3f5e8); border: 1px solid #e4e8d0; border-radius: 24px; padding: clamp(1.3rem, 3vw, 2rem); transition: transform .25s, box-shadow .25s; }
+    .bgp-item:nth-child(odd) .bgp-box { grid-column: 1; }
+    .bgp-item:nth-child(even) .bgp-box { grid-column: 3; }
+    .bgp-box::after { content: ""; position: absolute; right: -28px; bottom: -28px; width: 100px; height: 100px; border-radius: 0 100% 0 100%; background: rgba(111,148,86,.22); }
+    .bgp-box:hover { transform: translateY(-4px); box-shadow: 0 12px 26px rgba(74,93,52,.2); }
+    .bgp-box h2 { font-size: clamp(1.2rem, 2.2vw, 1.55rem); color: #2f3d1f; }
+    .bgp-box h2::after { content: ""; display: block; width: 40px; height: 4px; border-radius: 999px; background: #6f9456; margin: .6rem 0 .8rem; }
+    .bgp-box p { line-height: 1.7; color: #3b4d28; }
+    .bgp-box.hl { background: linear-gradient(160deg, #4a5d34, #3d4f2a); border-color: transparent; }
+    .bgp-box.hl h2, .bgp-box.hl p { color: #fff; }
+    .bgp-box.hl p { color: #dce0ca; }
+    .bgp-box.hl h2::after { background: #c9d9a8; }
+    .bgp-box.hl::after { background: rgba(255,255,255,.1); }
+
+    @media (max-width: 760px) {
+      .bgp-line::before { left: 3rem; }
+      .bgp-item { grid-template-columns: 3rem 1fr; gap: 1rem; }
+      .bgp-num { grid-column: 1; width: 3rem; height: 3rem; }
+      .bgp-item:nth-child(odd) .bgp-box, .bgp-item:nth-child(even) .bgp-box { grid-column: 2; }
+      .bgp-leaf.b { display: none; }
+    }
+
+    /* vertical reel carousel (prefixed "vr-" so it never clashes with style.css) */
+    .prcs { padding-bottom: 5rem !important; text-align: center; }
+    .vr-stage { position: relative; margin-top: 90px; height: 470px; perspective: 900px; touch-action: pan-x; user-select: none; cursor: grab; outline: none; }
+    .vr-stage.dragging { cursor: grabbing; }
+    .vr-stage.dragging .vr-card { transition: none; }
+    .vr-card {
+      position: absolute; left: 50%; top: 50%;
+      width: min(340px, 86vw); height: 120px; margin: -60px 0 0 calc(min(340px, 86vw) / -2);
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 1rem 1.4rem 1rem 4.6rem; text-align: left; border-radius: 24px;
+      background: linear-gradient(160deg, #fff, #f3f5e8); border: 1px solid #e4e8d0; color: #2f3d1f;
+      transition: transform .5s cubic-bezier(.2,.8,.2,1), opacity .5s, background .3s; will-change: transform;
+    }
+    .vr-card { text-decoration: none; -webkit-user-drag: none; }
+    .vr-card .n { position: absolute; top: 50%; left: 1.4rem; transform: translateY(-50%); font: 400 2rem "Bebas Neue", Impact, sans-serif; color: #6f9456; }
+    .vr-card h2 { font: 700 1.25rem/1.15 "Inter Tight", sans-serif; letter-spacing: -.02em; color: inherit; }
+    .vr-card.active { background: linear-gradient(160deg, #4a5d34, #3d4f2a); color: #fff; border-color: transparent; box-shadow: 0 18px 36px rgba(74, 93, 52, .35); }
+    .vr-card.active .n { color: #c9d9a8; }
+
+    /* ===================================================================
+       NEW: two columns. Carousel on the left, detail panel on the right.
+       =================================================================== */
+    .prcs {
+      display: grid;
+      grid-template-columns: minmax(300px, 380px) 1fr;
+      gap: 3rem;
+      align-items: center;
+      text-align: left;
+    }
+    .vr-stage { margin-top: 0; }
+    /* FIXED: ".bgp > section" was overriding the old padding rule (higher specificity), so the space never applied */
+    .bgp > .prcs { padding-top: 9rem; }
+
+    /* NEW: the panel on the right (change colors / sizes here) */
+    .vr-detail {
+      position: relative; overflow: hidden;
+      min-height: 280px; height: auto;      /* grows taller automatically as you add text */
+      min-width: 0; overflow-wrap: anywhere;  /* long text wraps instead of widening the box */
+      padding: clamp(1.5rem, 3vw, 2.4rem);
+      border-radius: 24px;
+      background: linear-gradient(160deg, #fff, #f3f5e8);
+      border: 1px solid #e4e8d0; color: #2f3d1f;
+      transition: background .3s, color .3s;
+    }
+    .vr-detail::after {
+      content: ""; position: absolute; right: -28px; bottom: -28px;
+      width: 120px; height: 120px; border-radius: 0 100% 0 100%;
+      background: rgba(111,148,86,.22);
+    }
+    .vr-detail.filled { background: linear-gradient(160deg, #4a5d34, #3d4f2a); color: #fff; border-color: transparent; }
+    .vr-detail .step { font: 400 1.4rem "Bebas Neue", Impact, sans-serif; color: #6f9456; letter-spacing: .04em; }
+    .vr-detail.filled .step { color: #c9d9a8; }
+    .vr-detail h3 { font: 700 clamp(1.4rem, 2.6vw, 1.9rem)/1.15 "Inter Tight", sans-serif; letter-spacing: -.02em; margin: .2rem 0 .8rem; }
+    .vr-detail p, .vr-detail li { line-height: 1.7; color: inherit; opacity: .92; }
+    .vr-detail.filled p, .vr-detail.filled li { color: #dce0ca; }
+    .vr-detail ul { padding-left: 1.2rem; margin-top: .5rem; }
+    .vr-detail p + p { margin-top: .8rem; }
+    .vr-detail.swap { animation: vrIn .35s ease; }
+    @keyframes vrIn { from { opacity: 0; transform: translateX(16px); } to { opacity: 1; transform: none; } }
+
+    @media (max-width: 760px) {
+      .prcs { grid-template-columns: 1fr; gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+    <main class="bgp">
+        <i class="bgp-leaf a"></i><i class="bgp-leaf b"></i><i class="bgp-leaf c"></i>
+          <nav class="nav">
+    <a class="brand" href="index.html"><img src="images/Ecotote.png" alt=""><span>EcoTote</span></a>
+
+    <ul class="links" id="menu">
+      <li><a href="index.html#about">About EcoTote</a></li>
+      <li><a href="background.html">Background</a></li>
+      <li><a href="methodology.html">Methodology</a></li>
+      <li><a href="tv.html">Testing and Variables</a></li>
+      <li><a href="index.html#significance">Significance of the Study</a></li>
+      <li><a href="index.html#team">Researchers Profile</a></li>
+    </ul>
+
+    <a class="btn" href="index.html#team">Our team</a>
+    <button class="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="menu">☰</button>
+  </nav>
+
+
+  <section class="bgp-intro">
+      <div class="bgp-title-row">
+        <h1>METHODOLOGY</h1>
+        <img class="bgp-title-gif" src="images/gif.gif" alt="">
+      </div>
+      <p class="bgp-lead">How it was made.</p>
+    </section>
+
+    
+
+    <section class="prcs">
+
+        <!-- LEFT SIDE: the carousel.
+             CHANGED: the cards are now <div>s instead of <a href="01.html"> links,
+             so clicking them no longer leaves the page.
+             (Only change the titles here. The long text goes in the script below.) -->
+        <div class="vr-stage" id="vrStage" tabindex="0" aria-label="Methodology steps. Swipe or use the arrow keys.">
+          <div class="vr-card"><span class="n">01</span><h2>Design and material planning</h2></div>
+          <div class="vr-card"><span class="n">02</span><h2>Prototype preparation</h2></div>
+          <div class="vr-card"><span class="n">03</span><h2>Controlled testing</h2></div>
+          <div class="vr-card"><span class="n">04</span><h2>Data recording</h2></div>
+          <div class="vr-card"><span class="n">05</span><h2>Evaluation</h2></div>
+        </div>
+
+        <!-- RIGHT SIDE: the empty space that gets filled when you click a card.
+             This is only the starting message. Edit it if you want. -->
+        <aside class="vr-detail" id="vrDetail" aria-live="polite">
+          <span class="step">Methodology</span>
+          <h3>Pick a step</h3>
+          <p>Click any card to see what happened at that stage.</p>
+        </aside>
+
+        <script>
+          (() => {
+            const stage = document.getElementById('vrStage');
+            const cards = [...stage.querySelectorAll('.vr-card')];
+            const n = cards.length;
+
+            /* ===============================================================
+               ✏️✏️✏️  PUT YOUR TEXT HERE  ✏️✏️✏️
+               One block per card, in the same order as the cards above.
+               - title: the heading shown on the right
+               - body : the content shown on the right. It can be plain text
+                        or HTML (<p>, <ul><li>, <strong>, <img>, ...).
+               Keep the backticks ` ` around the body. Text can span many lines.
+               Do NOT put a backtick inside your text.
+               =============================================================== */
+            const steps = [
+              { // ---- STEP 01 ----
+                title: 'Design and material planning',
+                body: `
+                  <p>insert.</p>
+                  
+                `
+              },
+              { // ---- STEP 02 ----
+                title: 'Prototype preparation',
+                body: `
+                  <p>Insert.</p>
+                `
+              },
+              { // ---- STEP 03 ----
+                title: 'Controlled testing',
+                body: `
+                  <p>insert.</p>
+                `
+              },
+              { // ---- STEP 04 ----
+                title: 'Data recording',
+                body: `
+                  <p>Insert.</p>
+                `
+              },
+              { // ---- STEP 05 ----
+                title: 'Evaluation',
+                body: `
+                  <p>Insert.</p>
+                `
+              },
+            ];
+            /* ============== END OF THE PART YOU EDIT ============== */
+
+
+            // NEW: fills the right panel with the chosen card's content
+            const detail = document.getElementById('vrDetail');
+            function show(card) {
+              const i = cards.indexOf(card);
+              detail.classList.remove('swap');
+              void detail.offsetWidth;                 // restart the slide-in animation
+              detail.classList.add('filled', 'swap');
+              detail.innerHTML =
+                `<span class="step">Step ${String(i + 1).padStart(2, '0')}</span>` +
+                `<h3>${steps[i].title}</h3>` +
+                steps[i].body;
+            }
+
+            const GAP = 140;          // distance between cards (px)
+            let cur = 0;              // the card that is (or will be) in the middle
+            let drag = 0;             // how far the finger has moved (px)
+            let startY = null, lastY = 0, lastT = 0, vel = 0, moved = 0;
+
+            // wrap a distance so the cards form a loop: always between -n/2 and n/2
+            const wrap = (x) => ((x + n / 2) % n + n) % n - n / 2;
+
+            function place(c, d) {
+              const a = Math.abs(d);
+              c.style.transform = `translateY(${d * GAP}px) rotateX(${d * -22}deg) scale(${1 - Math.min(a, 2) * 0.12})`;
+              c.style.opacity = a <= 2 ? 1 - a * 0.3 : Math.max(0, 0.4 - (a - 2) * 0.8);
+              c.style.zIndex = Math.round(10 - a);
+              c.classList.toggle('active', a < 0.5);
+            }
+
+            function render() {
+              const pos = cur - drag / GAP;            // dragging turns the barrel, it does not slide it
+              cards.forEach((c, i) => {
+                const d = wrap(i - pos);
+                // a card going round the back of the barrel jumps without animating
+                if (c._d !== undefined && Math.abs(d - c._d) > n / 2) {
+                  c.style.transition = 'none';
+                  place(c, d);
+                  c.offsetWidth;                       // force the browser to apply it now
+                  c.style.transition = '';
+                } else {
+                  place(c, d);
+                }
+                c._d = d;
+              });
+            }
+
+            // swipe / drag
+            stage.addEventListener('pointerdown', (e) => {
+              startY = e.clientY; lastY = startY; lastT = performance.now();
+              drag = 0; vel = 0; moved = 0;
+              stage.classList.add('dragging');
+              stage.setPointerCapture(e.pointerId);
+            });
+            stage.addEventListener('pointermove', (e) => {
+              if (startY === null) return;
+              drag = e.clientY - startY;
+              moved = Math.max(moved, Math.abs(drag));
+              const t = performance.now();
+              vel = (e.clientY - lastY) / Math.max(t - lastT, 1);   // speed in px per ms
+              lastY = e.clientY; lastT = t;
+              render();
+            });
+            function release(e) {
+              if (startY === null) return;
+              let target = Math.round(cur - (drag + vel * 180) / GAP);  // where the barrel would coast to
+              target = Math.max(cur - 3, Math.min(cur + 3, target));
+
+              /* CHANGED: a tap used to open 01.html etc.
+                 Now it rolls the card to the center AND fills the right panel. */
+              if (moved < 6) {                                          // it was a tap, not a swipe
+                const el = document.elementFromPoint(e.clientX, e.clientY);
+                const card = el && el.closest('.vr-card');
+                if (card) {
+                  target = cur + Math.round(wrap(cards.indexOf(card) - cur));  // roll it to the center
+                  show(card);                                                   // fill the panel
+                }
+              }
+
+              startY = null; drag = 0; vel = 0;
+              stage.classList.remove('dragging');
+              cur = target;
+              render();
+            }
+            stage.addEventListener('pointerup', release);
+            stage.addEventListener('pointercancel', release);
+
+            /* CHANGED: arrow keys still spin the wheel.
+               Enter / Space now fills the right panel (it used to open the page). */
+            stage.addEventListener('keydown', (e) => {
+              if (e.key === 'ArrowUp')   { e.preventDefault(); cur -= 1; render(); }
+              if (e.key === 'ArrowDown') { e.preventDefault(); cur += 1; render(); }
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                const active = cards.find((c) => c.classList.contains('active'));
+                if (active) show(active);
+              }
+            });
+
+            render();
+          })();
+        </script>
+    </section>
+
+    </main>
+
+  
+
+
+
+
+
+
+ <!--End-->
+ 
+    <div class="marquee" aria-hidden="true"><div class="track">
+    <span>Reduce</span><span>Reuse</span><span>Recycle</span><span>Plastic-free</span><span>EcoTote</span>
+    <span>Reduce</span><span>Reuse</span><span>Recycle</span><span>Plastic-free</span><span>EcoTote</span>
+  </div></div>
+
+  <footer class="foot">
+    <svg class="wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0,0 L0,40 C240,90 480,0 720,40 C960,80 1200,10 1440,45 L1440,0 Z" fill="#4c593e"/></svg>
+    <i class="leaf f1"></i><i class="leaf f2"></i>
+
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="index.html"><img src="images/Ecotote.png" alt=""><span>EcoTote</span></a>
+        <p>A stronger, greener alternative to plastic bags, made from recycled paper, cotton fibers, and beeswax.</p>
+      </div>
+      <div>
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="index.html#about">About EcoTote</a></li>
+          <li><a href="index.html#objectives">Objectives</a></li>
+          <li><a href="index.html#team">Our team</a></li>
+          <li><a href="#">Research</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Our promise</h3>
+        <ul class="tags"><li>Recycled</li><li>Reusable</li><li>Plastic-free</li></ul>
+        <a class="top" href="#">Back to top &uarr;</a>
+      </div>
+    </div>
+
+    <div class="foot-word" aria-hidden="true">ECOTOTE</div>
+    <p class="foot-bar">&copy; 2026 EcoTote &middot; A student research project</p>
+  </footer>
+
+  <!-- Menu toggle only (script.js is written for the home page hero) -->
+  <script>
+    const menuBtn = document.querySelector('.menu-btn');
+    const links = document.querySelector('.links');
+    menuBtn.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open);
+    });
+    links.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A') {
+        links.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // fade items in as you scroll
+    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.2 });
+    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+  </script>
+
+    
+  
+
+
+</body>
