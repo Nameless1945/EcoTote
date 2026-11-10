@@ -348,12 +348,12 @@
     </section>
 
 
-    <!-- NEW: video. The dashed placeholder shows until the video file loads. Change the src below if you move the file. -->
+    <!-- NEW: video. The play icon box shows until the video file loads. Change the src below if you move the file. -->
     <section class="eco-sec eco-vidsec">
       <h2>See it in action</h2>
-      <p class="eco-sub">Video placeholder: a short walkthrough of how the EcoTote was made.</p>
+      <p class="eco-sub">A short walkthrough of how the EcoTote was made.</p>
       <div class="eco-vid reveal">
-        <div class="eco-vid-ph" aria-hidden="true"><span class="play"></span><b>Video placeholder</b><span>images/1001366273.mp4</span></div>
+        <div class="eco-vid-ph" aria-hidden="true"><span class="play"></span></div>
         <video controls playsinline preload="metadata" aria-label="How the EcoTote was made">
           <source src="images/1001366273.mp4" type="video/mp4">
         </video>
@@ -490,7 +490,7 @@
     }
 
 
-    /* ---------- video placeholder ---------- */
+    /* ---------- video ---------- */
     .eco-vid { position: relative; margin-top: 2rem; aspect-ratio: 16 / 9; border-radius: 24px; overflow: hidden; background: linear-gradient(160deg, #4a5d34, #3d4f2a); border: 2px dashed #6f9456; box-shadow: 0 12px 26px rgba(74,93,52,.2); }
     .eco-vid::before { content: ""; position: absolute; inset: 0; background: radial-gradient(rgba(228,232,208,.12) 1.5px, transparent 1.5px); background-size: 22px 22px; }
     .eco-vid-ph { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .8rem; color: #e4e8d0; text-align: center; padding: 1rem; }
