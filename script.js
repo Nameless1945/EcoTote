@@ -28,6 +28,15 @@ function progress() {
 window.addEventListener('scroll', progress, { passive: true });
 progress();
 
+// "Back to top" links: scroll the window directly (href="#" is unreliable with the sticky hero on desktop)
+document.querySelectorAll('a.top, a.brand[href="#"]').forEach((a) => {
+  a.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    history.replaceState(null, '', location.pathname + location.search);
+  });
+});
+
 // reveal elements on scroll
 const io = new IntersectionObserver((entries) => {
   entries.forEach((en) => {

@@ -55,6 +55,7 @@
   </style>
 </head>
 <body>
+<div class="progress" aria-hidden="true"></div>
 
   <nav class="nav">
     <a class="brand" href="index.html"><img src="images/Ecotote.png" alt=""><span>EcoTote</span></a>
@@ -92,16 +93,62 @@
       <article class="bgp-item reveal"><span class="bgp-num">05</span>
         <div class="bgp-box "><h2>Research gap addressed</h2><p>Few studies evaluate the combined effects on load-bearing capacity, water resistance, and degradability. This study addresses that gap through systematic testing.</p></div></article>
     </section>
+
+    <!-- NEW: where each bag stands -->
+    <section class="eco-sec eco-compare">
+      <h2>Where each bag stands</h2>
+      <p class="eco-sub">Plastic is strong but never goes away. Ordinary paper goes away but gives out. EcoTote aims to do both.</p>
+      <div class="eco-cmp">
+        <article class="eco-bag reveal">
+          <h3>Plastic bag</h3>
+          <ul>
+            <li><i class="n">&#10005;</i><b>Breaks down</b><span>Does not break down</span></li>
+            <li><i class="y">&#10003;</i><b>Carries weight</b><span>Strong</span></li>
+            <li><i class="y">&#10003;</i><b>Handles water</b><span>Water resistant</span></li>
+          </ul>
+        </article>
+        <article class="eco-bag reveal">
+          <h3>Ordinary paper bag</h3>
+          <ul>
+            <li><i class="y">&#10003;</i><b>Breaks down</b><span>Biodegradable and renewable</span></li>
+            <li><i class="n">&#10005;</i><b>Carries weight</b><span>Low strength</span></li>
+            <li><i class="n">&#10005;</i><b>Handles water</b><span>Weak when wet</span></li>
+          </ul>
+        </article>
+        <article class="eco-bag us reveal">
+          <span class="eco-tag">Tested in this study</span>
+          <h3>EcoTote</h3>
+          <ul>
+            <li><i class="y">&#10003;</i><b>Breaks down</b><span>Biodegradable by design</span></li>
+            <li><i class="y">&#10003;</i><b>Carries weight</b><span>Reinforced with cotton fibers</span></li>
+            <li><i class="y">&#10003;</i><b>Handles water</b><span>Coated with beeswax</span></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
     <section class="locale">
         <div class="rl">
-            <div class=bgp-boxx><h2>Reseach Locale</h2></div>
-            <h3>Calapan City Public Market, Calapan city Oriental Mindoro</h3>
+            <div class="bgp-boxx"><h2>Research Locale</h2></div>
+            <h3>Calapan City Public Market, Calapan City, Oriental Mindoro</h3>
             <p>This is the context of the study, where the need for sustainable packaging alternatives is observed and understood.</p>
             <br>
-            <div class="bgp-boxx1"><h3>Prototype Preperation and testing location</h3></div>
-            <p>The prototype preperation and testing will be conducted in a seperate location away from the research locale to ensure controlled conditions and consistent evaluation</p>
+            <div class="lugar"><img src="images/Picture1.png"></div>
+            <div class="bgp-boxx1"><h3>Prototype Preparation and Testing Location</h3></div>
+            <p>The prototype preparation and testing will be conducted in a separate location away from the research locale to ensure controlled conditions and consistent evaluation</p>
             <br>
         </div>
+    </section>
+
+    <!-- NEW: next-page banner (uses your .cta style) -->
+    <section class="eco-next">
+      <div class="cta reveal">
+        <div>
+          <h2>Next: Methodology</h2>
+          <p>See how the prototype was planned, made, and tested.</p>
+        </div>
+        <a class="btn" href="methodology.html">Go to Methodology</a>
+      </div>
     </section>
   </main>
 
@@ -125,7 +172,7 @@
           <li><a href="index.html#about">About EcoTote</a></li>
           <li><a href="index.html#objectives">Objectives</a></li>
           <li><a href="index.html#team">Our team</a></li>
-          <li><a href="#">Research</a></li>
+          <li><a href="research.docx">Research</a></li>
         </ul>
       </div>
       <div>
@@ -157,6 +204,84 @@
     // fade items in as you scroll
     const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.2 });
     document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+  </script>
+
+  <!-- =====================================================================
+       NEW ADDITIONS: CSS  (edit colors, sizes and spacing here)
+       Every class starts with "eco-" so nothing clashes with style.css
+       ===================================================================== -->
+  <style>
+    /* ---------- shared: icons, next-page banner ---------- */
+    .eco-ico { width: 56px; height: 56px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; display: block; }
+    .bgp > .eco-next { padding-bottom: 5rem; }
+    .bgp > .eco-sec { padding-bottom: 5rem; }
+    .eco-sec > h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); color: #2f3d1f; }
+    .eco-sec > h2::after { content: ""; display: block; width: 56px; height: 5px; border-radius: 999px; background: #6f9456; margin: .7rem 0 0; }
+    .eco-sub { margin-top: 1rem; max-width: 56ch; line-height: 1.7; color: #3b4d28; }
+
+    /* ---------- timeline numbers pop in as each item appears ---------- */
+    .bgp-item.in .bgp-num { animation: ecoPop .6s .15s both; }
+    @keyframes ecoPop { 0% { transform: scale(.5); } 60% { transform: scale(1.18); } 100% { transform: scale(1); } }
+
+    /* ---------- comparison: three bags ---------- */
+    .eco-cmp { margin-top: 2rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; align-items: stretch; }
+    .eco-bag { position: relative; overflow: hidden; padding: clamp(1.4rem, 3vw, 1.9rem); border-radius: 24px; color: #2f3d1f;
+      background: linear-gradient(160deg, #fff, #f3f5e8); border: 1px solid #e4e8d0; transition: transform .25s, box-shadow .25s; }
+    .eco-bag::after { content: ""; position: absolute; right: -28px; bottom: -28px; width: 100px; height: 100px; border-radius: 0 100% 0 100%; background: rgba(111,148,86,.22); pointer-events: none; }
+    .eco-bag:hover { transform: translateY(-5px); box-shadow: 0 12px 26px rgba(74,93,52,.22); }
+    .eco-bag h3 { font: 700 1.4rem/1.15 "Inter Tight", sans-serif; letter-spacing: -.02em; }
+    .eco-bag ul { list-style: none; padding: 0; margin-top: 1.3rem; display: grid; gap: 1.1rem; position: relative; z-index: 1; }
+    .eco-bag li { display: grid; grid-template-columns: 2rem 1fr; column-gap: .8rem; row-gap: .1rem; align-items: center; }
+    .eco-bag li i { grid-row: span 2; width: 2rem; height: 2rem; border-radius: 50%; display: grid; place-items: center; font: 700 .95rem/1 "Inter", sans-serif; font-style: normal; }
+    .eco-bag li i.y { background: #4a5d34; color: #e4e8d0; }
+    .eco-bag li i.n { border: 2px solid #9aa58a; color: #7b8869; }
+    .eco-bag li b { font: 600 .85rem "Inter", sans-serif; color: #6f9456; }
+    .eco-bag li span { font: 600 1.02rem/1.3 "Inter Tight", sans-serif; }
+    .eco-bag.us { background: linear-gradient(160deg, #4a5d34, #3d4f2a); border-color: transparent; color: #fff; }
+    .eco-bag.us::before { content: ""; position: absolute; inset: 8px; border: 1.5px dashed rgba(228,232,208,.35); border-radius: 17px; pointer-events: none; }
+    .eco-bag.us::after { background: rgba(255,255,255,.1); }
+    .eco-bag.us li i.y { background: #c9d9a8; color: #2f3d1f; }
+    .eco-bag.us li b { color: #c9d9a8; }
+    .eco-tag { position: absolute; top: 1.2rem; right: 1.3rem; z-index: 1; background: #e4e8d0; color: #2f3d1f; padding: .25rem .75rem; border-radius: 999px; font: 600 .75rem "Inter", sans-serif; }
+    @media (max-width: 860px) { .eco-cmp { grid-template-columns: 1fr; } .eco-bag.us { padding-top: 3.4rem; } }
+
+    /* ---------- research locale (your existing HTML, now styled) ---------- */
+    .bgp > .locale { padding-bottom: 5rem; }
+    .locale .rl { position: relative; overflow: hidden; padding: clamp(1.5rem, 4vw, 2.6rem); border-radius: 28px; background: linear-gradient(160deg, #fff, #f3f5e8); border: 1px solid #e4e8d0; box-shadow: 12px 12px 0 #c9d9a8; }
+    .locale .rl::after { content: ""; position: absolute; right: 1.6rem; top: 1.6rem; width: 56px; height: 56px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M24 4C15.7 4 9 10.6 9 18.8 9 30 24 44 24 44s15-14 15-25.2C39 10.6 32.3 4 24 4z' fill='%236f9456'/%3E%3Ccircle cx='24' cy='19' r='6' fill='%23f3f5e8'/%3E%3C/svg%3E") no-repeat center / contain; }
+    .locale .rl br { display: none; }
+    .locale .bgp-boxx { display: inline-block; height: auto; margin: 0; padding: .7rem 1.5rem; }
+    .locale .bgp-boxx h2 { transform: none; font-size: 1.35rem; }
+    .locale .rl > h3 { margin: 1.1rem 0 .5rem; max-width: calc(100% - 4.5rem); font: 700 clamp(1.25rem, 2.6vw, 1.7rem)/1.2 "Inter Tight", sans-serif; letter-spacing: -.02em; color: #2f3d1f; }
+    .locale .rl p { max-width: 62ch; line-height: 1.7; color: #3b4d28; }
+    .locale .bgp-boxx1 { display: inline-block; margin: 2rem 0 .8rem; background: #6f9456; border-radius: 25px; }
+    .locale .bgp-boxx1 h3 { margin: 0; padding: .65rem 1.4rem; font: 700 1.05rem "Inter Tight", sans-serif; color: #fff; }
+
+    @media (prefers-reduced-motion: reduce) { .bgp-item.in .bgp-num { animation: none; } .eco-bag { transition: none; } .eco-bag:hover { transform: none; } }
+  
+    @media (max-width: 600px) {
+      .lugar img{max-width: 300px;}
+    }
+    
+  </style>
+
+  <!-- =====================================================================
+       NEW ADDITIONS: JS  (edit behavior here)
+       ===================================================================== -->
+  <script>
+    // top progress line: uses the .progress bar from style.css
+    (function () {
+      var bar = document.querySelector('.progress');
+      if (!bar) return;
+      function update() {
+        var h = document.documentElement, max = h.scrollHeight - window.innerHeight;
+        h.style.setProperty('--scroll', max > 0 ? window.scrollY / max : 0);
+      }
+      addEventListener('scroll', update, { passive: true });
+      addEventListener('resize', update);
+      update();
+    })();
   </script>
 </body>
 </html>

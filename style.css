@@ -168,7 +168,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 
 @media (max-width: 1200px) {
   .menu-btn { display: block; }
-  .btn { display: none; }
+  .btn { }
   .links {
     display: flex;
     position: absolute; top: 100%; left: 0; right: 0;
@@ -397,7 +397,8 @@ html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 
 
 /* ===== Bottom redesign: team band, footer ===== */
-.about-team { position: relative; overflow: hidden; background: linear-gradient(160deg, #dce0ca, #c9d9a8); }
+/* overflow: clip (not hidden) so the browser can't scroll this box internally when jumping to #significance */
+.about-team { position: relative; overflow: hidden; overflow: clip; background: linear-gradient(160deg, #dce0ca, #c9d9a8); }
 .about-team::after { content: ""; position: absolute; right: -80px; bottom: -90px; width: 320px; height: 320px; background: rgba(74, 93, 52, .18); border-radius: 0 100% 0 100%; transform: rotate(20deg); }
 .about-t { position: relative; z-index: 1; }
 
