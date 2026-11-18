@@ -421,8 +421,8 @@ html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 .foot .tags li { border: 1px solid #5d7345; border-radius: 999px; padding: .3rem .8rem; font-size: .8rem; }
 .foot .top { display: inline-block; margin-top: 1.5rem; color: #c9d9a8; text-decoration: none; font-weight: 600; font-size: .95rem; }
 
-.foot-word { position: relative; z-index: 1; text-align: center; font: 400 clamp(5rem, 22vw, 17rem)/.8 "Bebas Neue", Impact, sans-serif; color: rgba(228, 232, 208, .08); margin-top: 3rem; user-select: none; }
-.foot-bar { position: relative; z-index: 1; text-align: center; font-size: .8rem; opacity: .6; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(220, 224, 202, .15); }
+.foot-word { position: relative; z-index: 1; text-align: center; font: 400 clamp(5rem, 22vw, 17rem)/.8 "Bebas Neue", Impact, sans-serif; color: rgba(228, 232, 208, .08); margin-top: 3rem; user-select: none; pointer-events: none; }
+.foot-bar { position: relative; z-index: 1; pointer-events: none; text-align: center; font-size: .8rem; opacity: .6; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(220, 224, 202, .15); }
 
 @media (max-width: 700px) {
   .foot-grid { grid-template-columns: 1fr; }
