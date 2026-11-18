@@ -33,7 +33,7 @@
     <div class="stage">
       <img class="back" src="images/forest.webp" alt="">
       <h1>ECOTOTE</h1>
-      <h1>ECOTOTE</h1><p class="eco-hero-title">EVALUATING THE LOAD-BEARING CAPACITY, WATER RESISTANCE AND DEGRADABILITY OF ECOTOTE, COTTON FIBER REINFORCED AND BEESWAX-COATED RECYCLED PAPER, AS A HIGH STRENGHT AND BIODERADABLE PACKAGING IN CALAPAN CITY PUBLIC MARKET</p>
+      <p class="eco-hero-title">EVALUATING THE LOAD-BEARING CAPACITY, WATER RESISTANCE AND DEGRADABILITY OF ECOTOTE, COTTON FIBER REINFORCED AND BEESWAX-COATED RECYCLED PAPER, AS A HIGH STRENGTH AND BIODEGRADABLE PACKAGING IN CALAPAN CITY PUBLIC MARKET</p>
       
       <p class="hint">Scroll down</p>
     </div>
@@ -353,13 +353,17 @@
 
 <style>
   .stage .eco-hero-title {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: calc(50% + 7.65vw + 1.2rem);
-  opacity: calc(1 - var(--p, 0) * 1.6);
-  /* plus width, font, color, text-shadow */
-}
+    position: absolute; z-index: 2;
+    left: 50%; transform: translateX(-50%);
+    top: calc(50% + 7.65vw + 1.2rem);
+    width: min(900px, 88%); margin: 0; text-align: center;
+    font-family: "Inter Tight", "Inter", sans-serif; font-weight: 700;
+    font-size: clamp(.8rem, 1.6vw, 1.15rem); line-height: 1.4; letter-spacing: .06em;
+    color: #e4e8d0; text-shadow: 0 2px 12px rgba(0,0,0,.5);
+    /* fades on scroll exactly like the ECOTOTE heading */
+    opacity: calc(1 - var(--p, 0) * 1.6);
+  }
+  @media (max-width: 760px) { .stage .eco-hero-title { font-size: .7rem; width: 92%; } }
 
 
   .obj h3 {
